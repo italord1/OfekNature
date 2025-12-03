@@ -1,0 +1,22 @@
+.hero h1 {
+  font-size: 46px;
+}
+
+.hero p {
+  font-size: 22px;
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+  .hero {
+    height: 60vh;
+  }
+
+  .hero h1 {
+    font-size: 32px;
+  }
+
+  .hero p {
+    font-size: 16px;
+  }
+}
