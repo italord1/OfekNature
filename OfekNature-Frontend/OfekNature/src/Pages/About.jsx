@@ -1,81 +1,49 @@
-import { useEffect, useState, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import "../Styles/About.css";
 import { BaseUrlContext } from "../Context/BaseUrl";
 
 function About() {
-  const [photos, setPhotos] = useState([]);
   const [background, setBackground] = useState("");
-  const [loading, setLoading] = useState(true);
-
   const baseUrl = useContext(BaseUrlContext);
 
   useEffect(() => {
-    const fetchPhotos = async () => {
+    const fetchBackground = async () => {
       try {
         const res = await fetch(`${baseUrl}/api/photos`);
         const data = await res.json();
 
-        if (!data || !Array.isArray(data.photos)) {
-          console.error("Invalid response:", data);
-          return;
-        }
+        if (data && Array.isArray(data.photos) && data.photos.length > 0) {
+          // נבחרת תמונה אקראית או לפי קטגוריה "nature"
+          const naturePhotos = data.photos.filter(photo => photo.category === "nature");
+          const selectedPhoto = naturePhotos.length > 0 ? 
+            naturePhotos[Math.floor(Math.random() * naturePhotos.length)] : 
+            data.photos[0];
 
-        const aboutImages = data.photos.filter(
-          (photo) =>
-            photo.category === "portrait" ||
-            photo.category === "watersport" ||
-            photo.category === "fashion"
-        );
-
-        setPhotos(aboutImages.slice(0, 6));
-
-        if (aboutImages.length > 0) {
-          const randomIndex = Math.floor(Math.random() * aboutImages.length);
-          setBackground(aboutImages[randomIndex].url);
+          setBackground(selectedPhoto.url);
         }
       } catch (err) {
-        console.error("Error fetching about photos:", err);
-      } finally {
-        setLoading(false);
+        console.error("Error fetching background photo:", err);
+        // רקע ברירת מחדל אם יש תקלה
+        setBackground("https://images.unsplash.com/photo-1506744038136-46273834b3fb");
       }
     };
 
-    fetchPhotos();
-  }, []);
+    fetchBackground();
+  }, [baseUrl]);
 
   return (
     <section
       className="about"
       style={{
-        backgroundImage: background
-          ? `url(${background})`
-          : "url('https://images.unsplash.com/photo-1506744038136-46273834b3fb')",
+        backgroundImage: `url(${background})`,
       }}
     >
       <div className="about-overlay"></div>
-
       <div className="about-content">
-        <h2>About Noam</h2>
+        <h2>על אופק והחוויה בטבע</h2>
         <p>
-          Noam Tamir is a photographer specializing in ocean sports and
-          portraits. Her passion for the sea and human expression drives her
-          work, capturing both energy and emotion in every shot.
+           אופק מזמין אתכם לחוות את הטבע בצורה שונה ומיוחדת. בין אם מדובר בטיולים מרגיעים בשבילי יער, מסעות בעקבות נופים מרהיבים או מפגש עם בעלי חיים בסביבתם הטבעית – החוויה עם אופק היא חיבור אמיתי לטבע, להרפתקה ולהשראה.
         </p>
-
-        {loading ? (
-          <div className="loading">Loading photos...</div>
-        ) : (
-          <div className="about-gallery">
-            {photos.map((photo) => (
-              <div
-                key={photo.id}
-                className="gallery-item"
-              >
-                <img src={photo.url} alt={photo.name} loading="lazy" />
-              </div>
-            ))}
-          </div>
-        )}
       </div>
     </section>
   );

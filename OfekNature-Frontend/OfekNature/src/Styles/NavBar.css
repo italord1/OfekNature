@@ -20,7 +20,7 @@
 /* Desktop */
 .nav-links {
   display: flex;
-  gap: 25px;
+  gap: 20px;
   list-style: none;
 }
 
@@ -62,14 +62,19 @@
     flex-direction: column;
     width: 100%;
     text-align: center;
-    padding: 20px 0;
+    padding: 0; /* בלי padding, נוסיף אותו בתוך li */
     max-height: 0;
     overflow: hidden;
-    transition: 0.3s ease-in-out;
+    transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
+  }
+
+  .nav-links li {
+    padding: 15px 0; /* רווח פנימי לכל קישור */
   }
 
   .nav-links.active {
-    max-height: 260px;
+    max-height: 500px; /* גבוה מספיק לכל הקישורים */
+    padding: 20px 0;
   }
 
   .hamburger {

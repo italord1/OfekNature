@@ -7,7 +7,7 @@ export default function Navbar() {
 
   return (
     <nav className="navbar">
-      <h2 className="logo">OfeK Nature</h2>
+      <h2 className="logo">Ofek Nature</h2>
 
       <div className="hamburger" onClick={() => setOpen(!open)}>
         <span></span>
@@ -16,10 +16,13 @@ export default function Navbar() {
       </div>
 
       <ul className={open ? "nav-links active" : "nav-links"}>
-        <li><Link to="/" onClick={() => setOpen(false)}>בית</Link></li>
-        <li><Link to="/about" onClick={() => setOpen(false)}>אודות</Link></li>
-        <li><Link to="/gallery" onClick={() => setOpen(false)}>גלריה</Link></li>
         <li><Link to="/contact" onClick={() => setOpen(false)}>צור קשר</Link></li>
+         <li><Link to="/gallery" onClick={() => setOpen(false)}>גלריה</Link></li>
+          <li><Link to="/about" onClick={() => setOpen(false)}>אודות</Link></li>
+        <li><Link to="/" onClick={() => setOpen(false)}>בית</Link></li>
+       
+       
+        
       </ul>
     </nav>
   );
