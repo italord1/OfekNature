@@ -12,19 +12,15 @@ function About() {
         const res = await fetch(`${baseUrl}/photos`);
         const data = await res.json();
 
-        console.log(data); 
-
         if (Array.isArray(data) && data.length > 0) {
-          const randomPhoto =
-            data[Math.floor(Math.random() * data.length)];
-
-          console.log("Selected:", randomPhoto.url);
-
+          const randomPhoto = data[Math.floor(Math.random() * data.length)];
           setBackground(randomPhoto.url);
         }
       } catch (err) {
         console.error("Error fetching background photo:", err);
-        setBackground("https://images.unsplash.com/photo-1506744038136-46273834b3fb");
+        setBackground(
+          "https://images.unsplash.com/photo-1506744038136-46273834b3fb"
+        );
       }
     };
 
@@ -41,11 +37,20 @@ function About() {
       <div className="about-overlay"></div>
       <div className="about-content">
         <h2>על אופק והחוויה בטבע</h2>
+
         <p>
-          אופק מזמין אתכם לחוות את הטבע בצורה שונה ומיוחדת. בין אם מדובר בטיולים מרגיעים בשבילי יער,
-          מסעות בעקבות נופים מרהיבים או מפגש עם בעלי חיים בסביבתם הטבעית – החוויה עם אופק היא חיבור
-          אמיתי לטבע, להרפתקה ולהשראה.
+          אופק מזמין אתכם לחוות את הטבע בצורה שונה ומיוחדת. בין אם מדובר בטיולים מרגיעים,
+          מסעות בנופים מרהיבים או מפגש עם בעלי חיים – החוויה היא חיבור אמיתי לטבע.
         </p>
+
+        <div className="video-wrapper">
+          <iframe
+            src="https://drive.google.com/file/d/11pN5v78xCU7RfUND2oIcDtx4NZGvKpEFfI6G3Wtp0T4/preview"
+           allow="autoplay; fullscreen"
+           allowFullScreen
+            title="promo-video"
+          ></iframe>
+        </div>
       </div>
     </section>
   );
