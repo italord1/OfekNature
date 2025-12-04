@@ -9,21 +9,21 @@ function About() {
   useEffect(() => {
     const fetchBackground = async () => {
       try {
-        const res = await fetch(`${baseUrl}/api/photos`);
+        const res = await fetch(`${baseUrl}/photos`);
         const data = await res.json();
 
-        if (data && Array.isArray(data.photos) && data.photos.length > 0) {
-          // נבחרת תמונה אקראית או לפי קטגוריה "nature"
-          const naturePhotos = data.photos.filter(photo => photo.category === "nature");
-          const selectedPhoto = naturePhotos.length > 0 ? 
-            naturePhotos[Math.floor(Math.random() * naturePhotos.length)] : 
-            data.photos[0];
+        console.log(data); 
 
-          setBackground(selectedPhoto.url);
+        if (Array.isArray(data) && data.length > 0) {
+          const randomPhoto =
+            data[Math.floor(Math.random() * data.length)];
+
+          console.log("Selected:", randomPhoto.url);
+
+          setBackground(randomPhoto.url);
         }
       } catch (err) {
         console.error("Error fetching background photo:", err);
-        // רקע ברירת מחדל אם יש תקלה
         setBackground("https://images.unsplash.com/photo-1506744038136-46273834b3fb");
       }
     };
@@ -42,7 +42,9 @@ function About() {
       <div className="about-content">
         <h2>על אופק והחוויה בטבע</h2>
         <p>
-           אופק מזמין אתכם לחוות את הטבע בצורה שונה ומיוחדת. בין אם מדובר בטיולים מרגיעים בשבילי יער, מסעות בעקבות נופים מרהיבים או מפגש עם בעלי חיים בסביבתם הטבעית – החוויה עם אופק היא חיבור אמיתי לטבע, להרפתקה ולהשראה.
+          אופק מזמין אתכם לחוות את הטבע בצורה שונה ומיוחדת. בין אם מדובר בטיולים מרגיעים בשבילי יער,
+          מסעות בעקבות נופים מרהיבים או מפגש עם בעלי חיים בסביבתם הטבעית – החוויה עם אופק היא חיבור
+          אמיתי לטבע, להרפתקה ולהשראה.
         </p>
       </div>
     </section>
