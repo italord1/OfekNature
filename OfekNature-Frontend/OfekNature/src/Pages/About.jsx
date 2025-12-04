@@ -35,7 +35,7 @@ function About() {
     <section
       className="about"
       style={{
-        backgroundImage: `url(${background})`,
+        backgroundImage: `url("${background}")`,
       }}
     >
       <div className="about-overlay"></div>

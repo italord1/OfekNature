@@ -12,10 +12,12 @@ export default function Home() {
       try {
         const res = await fetch(`${baseUrl}/photos`);
         const data = await res.json();
+        console.log(data);
 
-        if (data.photos?.length > 0) {
-          const random = data.photos[Math.floor(Math.random() * data.photos.length)];
+        if (data.length > 0) {
+          const random = data[Math.floor(Math.random() * data.length)];
           setBg(random.url);
+          console.log(random.url);
         }
       } catch (err) {
         console.error("Home background error:", err);
@@ -30,7 +32,7 @@ export default function Home() {
     <div
       className="home"
       style={{
-        backgroundImage: `url(${bg})`,
+        backgroundImage: `url("${bg}")`,
       }}
     >
       <div className="home-overlay"></div>
