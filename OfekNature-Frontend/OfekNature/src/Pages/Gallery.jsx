@@ -24,7 +24,7 @@ export default function Gallery() {
   return (
     <div className="page">
       <h1>גלריית טבע</h1>
-      <p>צילומים מרהיבים מהסדנאות, הטיולים וההדרכות של OfeK Nature.</p>
+      <p>צילומים מרהיבים מהסדנאות, הטיולים וההדרכות של אופק</p>
 
       <div className="gallery-grid">
         {photos.map((photo, i) => (
