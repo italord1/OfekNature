@@ -9,7 +9,7 @@ export const BaseUrlProvider = ({ children }) => {
 
   const baseUrl = isLocal
     ? "http://localhost:5000"
-    : "https://ofeknature.onrender.com";
+    : "https://ofeknatureserver.onrender.com";
 
   return (
     <BaseUrlContext.Provider value={baseUrl}>
