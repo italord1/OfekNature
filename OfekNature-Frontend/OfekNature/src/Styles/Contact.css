@@ -60,7 +60,13 @@
   font-size: 1rem;
   outline: none;
   transition: all 0.3s ease;
-  
+  direction: rtl;
+}
+
+.contact input::placeholder,
+.contact textarea::placeholder {
+  color: #ffffff; 
+  opacity: 1; 
 }
 
 .contact input:focus,
@@ -73,6 +79,7 @@
   min-height: 120px;
   resize: vertical;
 }
+
 
 .contact button {
   background: linear-gradient(90deg, #00bcd4, #2f9b7b);

@@ -6,7 +6,7 @@ export default function Gallery() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:5000/photos")   
+    fetch("http://localhost:5000/photos")
       .then(res => res.json())
       .then(data => {
         setPhotos(data);
@@ -31,10 +31,14 @@ export default function Gallery() {
           <div className="gallery-item" key={i}>
             <img src={photo.url} alt={photo.name} />
 
-            {(photo.description || photo.credit) && (
+            {(photo.description?.trim() || photo.credit?.trim()) && (
               <div className="photo-info">
-                {photo.description && <p className="description">{photo.description}</p>}
-                {photo.credit && <p className="credit">קרדיט: {photo.credit}</p>}
+                {photo.description?.trim() && (
+                  <p className="description">{photo.description}</p>
+                )}
+                {photo.credit?.trim() && (
+                  <p className="credit">קרדיט: {photo.credit}</p>
+                )}
               </div>
             )}
           </div>

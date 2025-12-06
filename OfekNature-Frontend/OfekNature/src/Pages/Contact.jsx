@@ -45,12 +45,12 @@ function Contact() {
 
   return (
     <section className="contact">
-      <h2>Contact</h2>
+      <h2>צור קשר</h2>
       <form onSubmit={handleSubmit}>
         <input
           name="fname"
           type="text"
-          placeholder="First name"
+          placeholder="שם פרטי"
           value={formData.fname}
           onChange={handleChange}
           required
@@ -58,7 +58,7 @@ function Contact() {
         <input
           name="lname"
           type="text"
-          placeholder="Last name"
+          placeholder="שם משפחה"
           value={formData.lname}
           onChange={handleChange}
           required
@@ -66,7 +66,7 @@ function Contact() {
         <input
           name="email"
           type="email"
-          placeholder="Your email"
+          placeholder="אימייל"
           value={formData.email}
           onChange={handleChange}
           required
@@ -74,7 +74,7 @@ function Contact() {
         <input
           name="phone"
           type="tel"
-          placeholder="Phone number"
+          placeholder="מספר פלאפון"
           value={formData.phone}
           onChange={handleChange}
           required
@@ -82,19 +82,19 @@ function Contact() {
         <input
           name="subject"
           type="text"
-          placeholder="Subject"
+          placeholder="נושא"
           value={formData.subject}
           onChange={handleChange}
           required
         />
         <textarea
           name="message"
-          placeholder="Your message"
+          placeholder="תוכן ההודעה"
           value={formData.message}
           onChange={handleChange}
           required
         />
-        <button type="submit">Send</button>
+        <button type="submit">שלח</button>
       </form>
 
       {status && <p className="status-message">{status}</p>}
