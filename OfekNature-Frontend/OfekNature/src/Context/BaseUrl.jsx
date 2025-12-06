@@ -5,7 +5,7 @@ export const BaseUrlContext = createContext();
 
 export const BaseUrlProvider = ({ children }) => {
 
-  const isLocal = true; 
+  const isLocal = false; 
 
   const baseUrl = isLocal
     ? "http://localhost:5000"
