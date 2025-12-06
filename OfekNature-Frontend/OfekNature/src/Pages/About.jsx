@@ -2,6 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import "../Styles/About.css";
 import { BaseUrlContext } from "../Context/BaseUrl";
 
+
 function About() {
   const [background, setBackground] = useState("");
   const baseUrl = useContext(BaseUrlContext);
